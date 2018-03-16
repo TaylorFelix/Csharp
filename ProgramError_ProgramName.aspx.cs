@@ -9,11 +9,39 @@ using System.Data;
 using Maticsoft.DBUtility;
 using System.Text;
 using System.Net;
+using System.Data.Entity;
+using EntityFramework.Extensions;
+using System.Configuration;
+using System.Data.SqlClient;
+using AspNet = System.Web.UI.WebControls;
+using System.IO;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using System.Text.RegularExpressions;
 
-namespace FlexiumOA.ServerRoom
+namespace FlexiumOA.MIS.ProgramError
 {
-    public partial class MachineWarningProgramName : PageBase
+    public partial class ProgramError_ProgramName : PageBase
     {
+        #region ViewPower
+
+
+        /// <summary>
+        /// 本页面的浏览权限，空字符串表示本页面不受权限控制
+        /// </summary>
+        public override string ViewPower
+        {
+            get
+            {
+#if IgnorePowerCheck
+                return "";
+#endif
+                return "ProgramError_ProgramName";
+            }
+        }
+
+
+        #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
             Grid1Bind();
@@ -29,17 +57,12 @@ namespace FlexiumOA.ServerRoom
         }
         protected void Grid1_RowCommand(object sender, GridCommandEventArgs e)
         {
-            DataTable dt = Grid1.DataSource as DataTable;
-            string programname = Grid1.DataKeys[e.RowIndex][0].ToString();
-            // 選取programname所在行
-            if (e.CommandName == "Delete")
-            {
-                string sql = "delete from ProgramError_ProgramName where programName ='" +
-                dt.Rows[e.RowIndex]["programName"].ToString() + "'";
-                DbHelperSQL.ExecuteSql(sql);
-                Grid1Bind();
-            };
-            // command事件觸發delete，執行刪除數據
+            string ProgramName = Grid1.DataKeys[e.RowIndex][0].ToString();
+            SqlParameter[] sqlparams = new SqlParameter[1];
+            sqlparams[0] = new SqlParameter("ProgramName", ProgramName);
+            string sql = "delete from ProgramError_ProgramName where ProgramName=@ProgramName";
+            DbHelperSQL.ExecuteSql(sql, sqlparams);
+            Grid1Bind();
         }
         protected void btnSearch_Click(object sender, EventArgs e)
         {
@@ -65,15 +88,9 @@ namespace FlexiumOA.ServerRoom
                     return;
                 }
                 sb.AppendLine(" insert into ProgramError_ProgramName (ProgramName,Remark,C_user,C_DATE)");
-                sb.AppendLine(" values (N'" + tbProgramName.Text.Trim() + "','" + tbRemark.Text.Trim().Trim() + "' ");
+                sb.AppendLine(" values (N'" + tbProgramName.Text.Trim() + "',N'" + tbRemark.Text.Trim().Trim() + "' ");
                 sb.AppendLine("  ,'" + GetIdentityName() + "',getdate() )");
             }
-            //else
-            //{
-            //    sb.AppendLine(" update ProgramError_ProgramName  set ProgramName ='" + tbProgramName.Text.Trim() + "',Remark='" + tbRemark.Text.Trim().Trim() + "' ");
-            //    sb.AppendLine(" ,U_USER='" + GetIdentityName() + "',U_DATE=getdate() ");
-            //    sb.AppendLine(" where ProgramName ='" + HidCb.Text.Trim() + "'  ");
-            //}
             try
             {
                 int rows = DbHelperSQL.ExecuteSql(sb.ToString());
@@ -92,7 +109,6 @@ namespace FlexiumOA.ServerRoom
                 Alert.Show("添加失敗:" + ex);
                 return;
             }
-            // 標準加者式寫法
         }
 
         protected void Grid1_RowDoubleClick(object sender, GridRowClickEventArgs e)

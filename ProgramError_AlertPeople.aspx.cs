@@ -19,13 +19,32 @@ using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
 
-namespace FlexiumOA.ServerRoom
+namespace FlexiumOA.MIS.ProgramError
 {
-    public partial class MachineWarningProgramManager : PageBase
+    public partial class ProgramError_AlertPeople : PageBase
     {
+        #region ViewPower
+
+
+        /// <summary>
+        /// 本页面的浏览权限，空字符串表示本页面不受权限控制
+        /// </summary>
+        public override string ViewPower
+        {
+            get
+            {
+#if IgnorePowerCheck
+                return "";
+#endif
+                return "ProgramError_AlertPeople";
+            }
+        }
+
+
+        #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             if (!IsPostBack)
             {
                 GridDataBind();
@@ -34,8 +53,8 @@ namespace FlexiumOA.ServerRoom
         string sql;
         private void GridDataBind()
         {
-            sql = "select ID,ProgramName,Manager from ProgramError_ProgramManager";
-            string sql2 = "select isnull(count(*),0) from (" + sql + ") ProgramError_ProgramManager";
+            sql = "select ID,ProgramName,Empno from ProgramError_AlertPeople";
+            string sql2 = "select isnull(count(*),0) from (" + sql + ") ProgramError_AlertPeople";
             DataTable dtcount = DbHelperSQL.Query(sql2).Tables[0];
             Grid1.RecordCount = Convert.ToInt32(dtcount.Rows[0][0].ToString());
 
@@ -46,11 +65,16 @@ namespace FlexiumOA.ServerRoom
             Grid1.DataSource = ds.Tables[0];
             Grid1.DataBind();
 
-            sql = "select ProgramName from ProgramError_ProgramName";
-            DataTable dt = DbHelperSQL.Query(sql).Tables[0];
+            string t = GetIdentityName();
+            if (t.Trim() == "")
+            {
+                t = "flexiumcn\\felix_yang";
+            }
+            string strtID = "select a.ProgramName from ProgramError_ProgramName a,ProgramError_ProgramManager b where a.ProgramName=b.ProgramName and Manager ='" + t + "'";
+            DataTable dttID = DbHelperSQL.Query(strtID).Tables[0];
             ddl_ProgramName.DataTextField = "ProgramName";
             ddl_ProgramName.DataValueField = "ProgramName";
-            ddl_ProgramName.DataSource = dt;
+            ddl_ProgramName.DataSource = dttID;
             ddl_ProgramName.DataBind();
         }
 
@@ -61,31 +85,32 @@ namespace FlexiumOA.ServerRoom
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            string Manager = TriggerBox_Manager.Text.Trim();
+
             string ProgramName = ddl_ProgramName.SelectedValue;
+            string EmpNo = TriggerBox_EmpNo.Text.Trim();
             SqlParameter[] sqlparams = new SqlParameter[2];
-            sqlparams[0] = new SqlParameter("Manager", Manager);
-            sqlparams[1] = new SqlParameter("ProgramName", ProgramName);
-            sql = "select * from ProgramError_ProgramManager where Manager=@Manager and ProgramName=@ProgramName";
+            sqlparams[0] = new SqlParameter("ProgramName", ProgramName);
+            sqlparams[1] = new SqlParameter("Empno", EmpNo);
+            sql = "select * from ProgramError_AlertPeople where Empno=@Empno and ProgramName=@ProgramName";
             if (DbHelperSQL.Query(sql, sqlparams).Tables[0].Rows.Count > 0)
             {
-                Alert.Show("此用戶對應報警類型已存在" + Manager);
+                Alert.Show("此用戶對應報警類型已存在" + EmpNo);
                 return;
             }
 
-            sql = "insert into ProgramError_ProgramManager(Manager,ProgramName) " +
-                "values(@Manager,@ProgramName)";
+            sql = "insert into ProgramError_AlertPeople(Empno,ProgramName) " +
+                "values(@Empno,@ProgramName)";
             sqlparams = new SqlParameter[2];
-            sqlparams[0] = new SqlParameter("Manager", TriggerBox_Manager.Text.Trim());
+            sqlparams[0] = new SqlParameter("Empno", TriggerBox_EmpNo.Text.Trim());
             sqlparams[1] = new SqlParameter("ProgramName", ddl_ProgramName.SelectedValue);
             DbHelperSQL.ExecuteSql(sql, sqlparams);
             GridDataBind();
         }
 
-        protected void TriggerBox_Manager_TriggerClick(object sender, EventArgs e)
+        protected void TriggerBox_EmpNo_TriggerClick(object sender, EventArgs e)
         {
-            PageContext.RegisterStartupScript(Window1.GetSaveStateReference(TriggerBox_Manager.ClientID)
-                    + Window1.GetShowReference("UserSelect.aspx?param1=" + TriggerBox_Manager.Text.Trim() + "", "添加管理員", 750, 600));
+            PageContext.RegisterStartupScript(Window1.GetSaveStateReference(TriggerBox_EmpNo.ClientID, tbEmpName.ClientID)
+                    + Window1.GetShowReference("ProgramError_EmpNoSelect.aspx?param1=" + TriggerBox_EmpNo.Text.Trim() + "", "添加報警通知人員", 750, 600));
         }
 
         protected void Grid1_RowCommand(object sender, GridCommandEventArgs e)
@@ -93,11 +118,12 @@ namespace FlexiumOA.ServerRoom
             if (e.CommandName == "Delete")
             {
                 int ID = int.Parse(Grid1.DataKeys[e.RowIndex][0].ToString());
-                sql = "delete from ProgramError_ProgramManager where ID='"+
+                sql = "delete from ProgramError_AlertPeople where ID='" +
                 int.Parse(Grid1.DataKeys[e.RowIndex][0].ToString()) + "'";
                 DbHelperSQL.ExecuteSql(sql);
                 GridDataBind();
             }
+
         }
     }
 }

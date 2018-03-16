@@ -17,16 +17,31 @@ using System.IO;
 using System.Data.OracleClient;
 using AspNet = System.Web.UI.WebControls;
 
-namespace FlexiumOA.ServerRoom
+namespace FlexiumOA.MIS.ProgramError
 {
-    public partial class EmpNoSelect : PageBase
+    public partial class ProgramError_EmpNoSelect : PageBase
     {
-        
+        #region ViewPower
 
+
+        /// <summary>
+        /// 本页面的浏览权限，空字符串表示本页面不受权限控制
+        /// </summary>
+        public override string ViewPower
+        {
+            get
+            {
+#if IgnorePowerCheck
+                return "";
+#endif
+                return "ProgramError_EmpNoSelect";
+            }
+        }
+        #endregion
         #region Page_Load
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             if (!IsPostBack)
             {
 
@@ -36,7 +51,7 @@ namespace FlexiumOA.ServerRoom
         }
         private void BindGrid1()
         {
-            
+
             StringBuilder sb = new StringBuilder();
             sb.Append("  select emp_no,emp_name from door_emp");
             //sb.Append(" order by decode(a.factory,2011,'KS','KH'),a.wip_id   ");
@@ -94,7 +109,7 @@ namespace FlexiumOA.ServerRoom
             return paged;
         }
         #endregion
-        
+
         #endregion
 
         #region Grid1 Events
@@ -106,7 +121,7 @@ namespace FlexiumOA.ServerRoom
         }
         protected void Grid1_Sort(object sender, GridSortEventArgs e)
         {
-            
+
             BindGrid1();
         }
 
@@ -138,7 +153,7 @@ namespace FlexiumOA.ServerRoom
             int x = 0;
             string emp_no = "";
             string emp_name = "";
-            
+
             for (int i = 0; i < Grid1.Rows.Count; i++)
             {
                 AspNet.CheckBox ddlJhJg = (AspNet.CheckBox)Grid1.Rows[i].FindControl("ckSelect");
@@ -147,7 +162,7 @@ namespace FlexiumOA.ServerRoom
                     x++;
                     emp_no = Grid1.Rows[i].DataKeys[0].ToString();
                     emp_name = Grid1.Rows[i].DataKeys[1].ToString();
-                    
+
                 }
             }
             if (x == 0)

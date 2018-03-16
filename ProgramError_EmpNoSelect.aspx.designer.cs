@@ -7,10 +7,10 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace FlexiumOA.ServerRoom {
+namespace FlexiumOA.MIS.ProgramError {
     
     
-    public partial class MachineWarningProgramManager {
+    public partial class ProgramError_EmpNoSelect {
         
         /// <summary>
         /// form1 控件。
@@ -31,49 +31,22 @@ namespace FlexiumOA.ServerRoom {
         protected global::FineUIPro.PageManager PageManager1;
         
         /// <summary>
-        /// Panel1 控件。
+        /// RegionPanel1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FineUIPro.Panel Panel1;
+        protected global::FineUIPro.RegionPanel RegionPanel1;
         
         /// <summary>
-        /// SimpleForm1 控件。
+        /// Region1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FineUIPro.SimpleForm SimpleForm1;
-        
-        /// <summary>
-        /// TriggerBox_Manager 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUIPro.TriggerBox TriggerBox_Manager;
-        
-        /// <summary>
-        /// ddl_ProgramName 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUIPro.DropDownList ddl_ProgramName;
-        
-        /// <summary>
-        /// btnSave 控件。
-        /// </summary>
-        /// <remarks>
-        /// 自动生成的字段。
-        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
-        /// </remarks>
-        protected global::FineUIPro.Button btnSave;
+        protected global::FineUIPro.Region Region1;
         
         /// <summary>
         /// Grid1 控件。
@@ -85,31 +58,58 @@ namespace FlexiumOA.ServerRoom {
         protected global::FineUIPro.Grid Grid1;
         
         /// <summary>
-        /// ToolbarSeparator1 控件。
+        /// Toolbar2 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FineUIPro.ToolbarSeparator ToolbarSeparator1;
+        protected global::FineUIPro.Toolbar Toolbar2;
         
         /// <summary>
-        /// ToolbarText1 控件。
+        /// tbEmpNO 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FineUIPro.ToolbarText ToolbarText1;
+        protected global::FineUIPro.TextBox tbEmpNO;
         
         /// <summary>
-        /// ddlGridPageSize 控件。
+        /// tbEmpName 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FineUIPro.DropDownList ddlGridPageSize;
+        protected global::FineUIPro.TextBox tbEmpName;
+        
+        /// <summary>
+        /// Button1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::FineUIPro.Button Button1;
+        
+        /// <summary>
+        /// btnSelect 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::FineUIPro.Button btnSelect;
+        
+        /// <summary>
+        /// ckSelect 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox ckSelect;
         
         /// <summary>
         /// Window1 控件。

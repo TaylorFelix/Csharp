@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MachineWarningProgramName.aspx.cs" Inherits="FlexiumOA.ServerRoom.MachineWarningProgramName" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ProgramError_ProgramName.aspx.cs" Inherits="FlexiumOA.MIS.ProgramError.ProgramError_ProgramName" %>
 
 <!DOCTYPE html>
 
@@ -46,13 +46,10 @@
                         <f:BoundField DataField="Remark" HeaderText="信息維護" Width="100px"  HeaderTextAlign="Center" />
                         <f:BoundField DataField="C_USER" HeaderText="錄入人" Width="160px"  HeaderTextAlign="Center" />                  
                         <f:BoundField DataField="C_Date" HeaderText="錄入時間" Width="140px" DataFormatString="{0:yyyy/MM/dd}" HeaderTextAlign="Center" />
-                        <%--<f:BoundField DataField="U_USER" HeaderText="更新人" Width="160px"  HeaderTextAlign="Center"  />
-                        <f:BoundField DataField="U_Date" HeaderText="更新時間" Width="160px" DataFormatString="{0:yyyy/MM/dd}"  HeaderTextAlign="Center" /> 
-                        --%><f:LinkButtonField ColumnID="deleteField" TextAlign="Center" Icon="Delete" HeaderText="刪除" ToolTip="刪除" ConfirmText="確定刪除？"
+                        <f:LinkButtonField ColumnID="deleteField" TextAlign="Center" Icon="Delete" HeaderText="刪除" ToolTip="刪除" ConfirmText="確定刪除？"
                                     ConfirmTarget="Self" CommandName="Delete" Width="100px">
                                 </f:LinkButtonField>
-                    </Columns>
-                    
+                    </Columns> 
                 </f:Grid>              
             </Items>
         </f:Panel>      

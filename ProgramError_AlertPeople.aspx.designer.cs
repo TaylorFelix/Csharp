@@ -7,10 +7,10 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace FlexiumOA.ServerRoom {
+namespace FlexiumOA.MIS.ProgramError {
     
     
-    public partial class MachineWarningAddPerson {
+    public partial class ProgramError_AlertPeople {
         
         /// <summary>
         /// form1 控件。
@@ -58,13 +58,13 @@ namespace FlexiumOA.ServerRoom {
         protected global::FineUIPro.DropDownList ddl_ProgramName;
         
         /// <summary>
-        /// TriggerBox_EpmNO 控件。
+        /// TriggerBox_EmpNo 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FineUIPro.TriggerBox TriggerBox_EpmNO;
+        protected global::FineUIPro.TriggerBox TriggerBox_EmpNo;
         
         /// <summary>
         /// tbEmpName 控件。

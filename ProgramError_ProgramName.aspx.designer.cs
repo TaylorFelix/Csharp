@@ -7,10 +7,10 @@
 // </自动生成>
 //------------------------------------------------------------------------------
 
-namespace FlexiumOA.ServerRoom {
+namespace FlexiumOA.MIS.ProgramError {
     
     
-    public partial class UserSelect {
+    public partial class ProgramError_ProgramName {
         
         /// <summary>
         /// form1 控件。
@@ -31,22 +31,31 @@ namespace FlexiumOA.ServerRoom {
         protected global::FineUIPro.PageManager PageManager1;
         
         /// <summary>
-        /// RegionPanel1 控件。
+        /// Panel1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FineUIPro.RegionPanel RegionPanel1;
+        protected global::FineUIPro.Panel Panel1;
         
         /// <summary>
-        /// Region1 控件。
+        /// Form 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FineUIPro.Region Region1;
+        protected global::FineUIPro.Form Form;
+        
+        /// <summary>
+        /// Label2 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::FineUIPro.Label Label2;
         
         /// <summary>
         /// Grid1 控件。
@@ -58,6 +67,33 @@ namespace FlexiumOA.ServerRoom {
         protected global::FineUIPro.Grid Grid1;
         
         /// <summary>
+        /// Toolbar1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::FineUIPro.Toolbar Toolbar1;
+        
+        /// <summary>
+        /// tbProgramName 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::FineUIPro.TextBox tbProgramName;
+        
+        /// <summary>
+        /// tbRemark 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::FineUIPro.TextBox tbRemark;
+        
+        /// <summary>
         /// Toolbar2 控件。
         /// </summary>
         /// <remarks>
@@ -67,48 +103,57 @@ namespace FlexiumOA.ServerRoom {
         protected global::FineUIPro.Toolbar Toolbar2;
         
         /// <summary>
-        /// tb_Name 控件。
+        /// btnSave 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FineUIPro.TextBox tb_Name;
+        protected global::FineUIPro.Button btnSave;
         
         /// <summary>
-        /// Button1 控件。
+        /// btnSearch 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FineUIPro.Button Button1;
+        protected global::FineUIPro.Button btnSearch;
         
         /// <summary>
-        /// btnSelect 控件。
+        /// hidLx 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FineUIPro.Button btnSelect;
+        protected global::FineUIPro.HiddenField hidLx;
         
         /// <summary>
-        /// ckSelect 控件。
+        /// HidCb 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox ckSelect;
+        protected global::FineUIPro.HiddenField HidCb;
         
         /// <summary>
-        /// Window1 控件。
+        /// HidQxDm 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::FineUIPro.Window Window1;
+        protected global::FineUIPro.HiddenField HidQxDm;
+        
+        /// <summary>
+        /// HidDeptId 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::FineUIPro.HiddenField HidDeptId;
     }
 }

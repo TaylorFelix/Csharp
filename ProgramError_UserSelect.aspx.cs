@@ -17,11 +17,29 @@ using System.IO;
 using System.Data.OracleClient;
 using AspNet = System.Web.UI.WebControls;
 
-namespace FlexiumOA.ServerRoom
+namespace FlexiumOA.MIS.ProgramError
 {
-    public partial class UserSelect : PageBase
+    public partial class ProgramError_UserSelect : PageBase
     {
+        #region ViewPower
 
+
+        /// <summary>
+        /// 本页面的浏览权限，空字符串表示本页面不受权限控制
+        /// </summary>
+        public override string ViewPower
+        {
+            get
+            {
+#if IgnorePowerCheck
+                return "";
+#endif
+                return "ProgramError_UserSelect";
+            }
+        }
+
+
+        #endregion
         #region Page_Load
         protected void Page_Load(object sender, EventArgs e)
         {

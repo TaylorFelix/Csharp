@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MachineWarningProgramManager.aspx.cs" Inherits="FlexiumOA.ServerRoom.MachineWarningProgramManager" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ProgramError_ProgramManager.aspx.cs" Inherits="FlexiumOA.MIS.ProgramError.ProgramError_ProgramManager" %>
 
 <!DOCTYPE html>
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EmpNoSelect.aspx.cs" Inherits="FlexiumOA.ServerRoom.EmpNoSelect" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ProgramError_EmpNoSelect.aspx.cs" Inherits="FlexiumOA.MIS.ProgramError.ProgramError_EmpNoSelect" %>
 
 <!DOCTYPE html>
 
@@ -47,3 +47,4 @@
     </form>
 </body>
 </html>
+

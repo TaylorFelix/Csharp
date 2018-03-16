@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MachineWarningAddPerson.aspx.cs" Inherits="FlexiumOA.ServerRoom.MachineWarningAddPerson" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ProgramError_AlertPeople.aspx.cs" Inherits="FlexiumOA.MIS.ProgramError.ProgramError_AlertPeople" %>
 
 <!DOCTYPE html>
 
@@ -20,8 +20,8 @@
                             <Items>
                                 <f:DropDownList ID="ddl_ProgramName" Label="報警组" runat="server" Width="350px" Required="true" ShowRedStar="true" EnableEdit="false" ForceSelection="true" >                                   
                                 </f:DropDownList>
-                                <f:TriggerBox ID="TriggerBox_EpmNO" EnableEdit="false" Label="工號" Text="" Width="350px" 
-                                 TriggerIcon="Search"  OnTriggerClick="TriggerBox_EpmNO_TriggerClick" runat="server"></f:TriggerBox>
+                                <f:TriggerBox ID="TriggerBox_EmpNo" EnableEdit="false" Label="工號" Text="" Width="350px" 
+                                 TriggerIcon="Search"  OnTriggerClick="TriggerBox_EmpNo_TriggerClick" runat="server"></f:TriggerBox>
                                 <f:TextBox ID="tbEmpName" runat="server"  Readonly="true"   Width="105px" Required="true" TabIndex="12"></f:TextBox>
                                 <f:Button ID="btnSave" runat="server" Icon="SystemSave" OnClick="btnSave_Click" ValidateForms="SimpleForm1" ValidateTarget="Top" Text="添加">
                                 </f:Button>
@@ -30,7 +30,7 @@
                     </Items>
                 </f:Panel>
                 
-                <f:Grid runat="server" ID="Grid1" BoxFlex="1" DataKeyNames="ID" ShowHeader="false" AllowPaging="true" PageSize="20"   OnRowCommand="Grid1_RowCommand" OnPageIndexChange="Grid1_PageIndexChange">
+                <f:Grid runat="server" ID="Grid1" BoxFlex="1" DataKeyNames="ID,ProgramName,EmpNo" ShowHeader="false" AllowPaging="true" PageSize="20"   OnRowCommand="Grid1_RowCommand" OnPageIndexChange="Grid1_PageIndexChange">
                     <PageItems>
                         <f:ToolbarSeparator ID="ToolbarSeparator1" runat="server">
                         </f:ToolbarSeparator>
@@ -58,3 +58,4 @@
     </form>
 </body>
 </html>
+

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UserSelect.aspx.cs" Inherits="FlexiumOA.ServerRoom.UserSelect" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ProgramError_UserSelect.aspx.cs" Inherits="FlexiumOA.MIS.ProgramError.ProgramError_UserSelect" %>
 
 <!DOCTYPE html>
 
