@@ -53,16 +53,29 @@ namespace FlexiumOA.MIS.ProgramError
             DataTable dt = DbHelperSQL.Query(strDept).Tables[0];
             Grid1.DataSource = dt;
             Grid1.DataBind();
-            // 查詢programerror_programname表內所有programname數據
         }
         protected void Grid1_RowCommand(object sender, GridCommandEventArgs e)
         {
-            string ProgramName = Grid1.DataKeys[e.RowIndex][0].ToString();
-            SqlParameter[] sqlparams = new SqlParameter[1];
-            sqlparams[0] = new SqlParameter("ProgramName", ProgramName);
-            string sql = "delete from ProgramError_ProgramName where ProgramName=@ProgramName";
-            DbHelperSQL.ExecuteSql(sql, sqlparams);
-            Grid1Bind();
+            if (e.CommandName == "Delete")
+            {
+                string ProgramName = Grid1.DataKeys[e.RowIndex][0].ToString();
+                SqlParameter[] sqlparams = new SqlParameter[1];
+                sqlparams[0] = new SqlParameter("ProgramName", ProgramName);
+                string sql = "select ProgramName,Manager from ProgramError_ProgramManager Where ProgramName=@ProgramName";
+                DataTable dt = DbHelperSQL.Query(sql, sqlparams).Tables[0];
+                if (dt.Rows.Count == 0)
+                {
+                    string sql2 = "delete from ProgramError_ProgramName where ProgramName=@ProgramName";
+                    DbHelperSQL.ExecuteSql(sql2, sqlparams);
+                    string sql3 = "delete from ProgramError_AlertPeople where ProgramName=@ProgramName";
+                    DbHelperSQL.ExecuteSql(sql3, sqlparams);
+                    Grid1Bind();
+                }
+                else
+                {
+                    Alert.Show("該類型下已有對應管理員，請先刪除類型對應管理員再執行刪除操作！");
+                }
+            }
         }
         protected void btnSearch_Click(object sender, EventArgs e)
         {
